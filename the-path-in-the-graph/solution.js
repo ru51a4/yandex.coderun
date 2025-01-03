@@ -41,9 +41,7 @@ let solution = () => {
             r[i] = { id: i, childs: [] }
         }
     }
-    let dist = []
     for (let i in tree) {
-        dist[i] = 9999999
         for (let j in tree[i]) {
             if (!tree[i][j]) {
                 continue
@@ -51,9 +49,7 @@ let solution = () => {
             r[i].childs.push(r[j])
         }
     }
-    dist[start] = 0
     //
-    //dijkstra
     let queue = [r[start]];
     let marked = [];
     let res = []
@@ -69,12 +65,8 @@ let solution = () => {
         }
         marked[node.id] = true;
         for (let child of node.childs) {
-            if (dist[child.id] > dist[node.id] + 1) {
-                dist[child.id] = dist[node.id] + 1
-                queue.push(child)
-                res = res.filter((c) => c._key != child.id)
-                res.push({ _key: child.id, prev: node })
-            }
+            queue.push(child)
+            res.push({ _key: child.id, prev: node })
         }
     }
 
