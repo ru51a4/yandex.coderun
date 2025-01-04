@@ -1,0 +1,1 @@
+https://coderun.yandex.ru/problem/pedigree-number-of-descendants/
